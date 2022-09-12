@@ -1,0 +1,27 @@
+# 		MACROS ESPECIAIS	
+#
+# $@: Nome completo do alvo atual
+#
+# $?: Lista de arquivos desatualizados para dependencia atual
+#
+# $<: Arquivo fonte da unica dependencia atual
+
+########	COM MACROS ESPECIAIS	########
+	
+CC=gcc
+CFLAGS=-Wall
+
+OBJECTS = hello-ex.o hello-ex2.o 
+
+PROGRAM = hello
+
+all: $(PROGRAM)
+
+$(PROGRAM): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+	
+clean:
+	rm -vf hello-ex2*.o

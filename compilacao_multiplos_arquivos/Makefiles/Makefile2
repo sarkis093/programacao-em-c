@@ -1,0 +1,27 @@
+CC=gcc
+CFLAGS=-Wall
+
+# 		MACROS ESPECIAIS	
+#
+# $@: Nome completo do alvo atual
+#
+# $?: Lista de arquivos desatualizados para dependencia atual
+#
+# $<: Arquivo fonte da unica dependencia atual
+
+#		COM DEPENDÊNCIAS		
+
+hello:
+	$(CC) hello-ex.c hello-ex2.c -o hello
+
+hello-ex.o:
+	$(CC) $(CFLAGS) -c hello-ex.c
+
+hello-ex2.o:
+	$(CC) $(CFLAGS) -c hello-ex2.c
+
+all: hello-ex.o hello-ex2.0
+	$(CC) hello-ex.o hello-ex2.o -c hello
+	
+clean:
+	rm -vf hello-ex2*.o
